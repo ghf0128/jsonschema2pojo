@@ -27,9 +27,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class FragmentResolver {
 
     public JsonNode resolve(JsonNode tree, String path, String refFragmentPathDelimiters) {
+        // we can't split on all hashes, just in case a hash is used in the property name (see #1402), so we remove the fragment '#' start manually
+        path = removeStart(path, "#");
+        refFragmentPathDelimiters = refFragmentPathDelimiters.replace("#", "");
 
         return resolve(tree, new ArrayList<>(asList(split(path, refFragmentPathDelimiters))));
-
     }
 
     private JsonNode resolve(JsonNode tree, List<String> path) {

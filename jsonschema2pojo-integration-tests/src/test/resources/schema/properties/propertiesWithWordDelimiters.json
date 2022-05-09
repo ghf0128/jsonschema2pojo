@@ -10,6 +10,9 @@
         },
         "property_with mixed-delimiters" : {
             "type" : "string"
+        },
+        "property-with-hash#" : {
+            "type" : "string"
         }
     }
 }

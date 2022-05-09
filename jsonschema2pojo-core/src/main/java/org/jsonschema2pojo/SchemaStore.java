@@ -96,7 +96,7 @@ public class SchemaStore {
     @SuppressWarnings("PMD.UselessParentheses")
     public Schema create(Schema parent, String path, String refFragmentPathDelimiters) {
 
-        if (!path.equals("#")) {
+        if (!path.startsWith("#")) {
             // if path is an empty string then resolving it below results in jumping up a level. e.g. "/path/to/file.json" becomes "/path/to"
             path = stripEnd(path, "#?&/");
         }
